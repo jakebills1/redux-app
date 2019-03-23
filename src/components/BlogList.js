@@ -2,6 +2,7 @@ import React from 'react';
 import { Header, Segment, Button, Icon } from 'semantic-ui-react';
 import { connect, } from 'react-redux';
 import { Link, } from 'react-router-dom';
+import styled from 'styled-components';
 
 
 const BlogList = ({ blogs, dispatch}) => (
@@ -9,7 +10,7 @@ const BlogList = ({ blogs, dispatch}) => (
     {blogs.map( blog => (
       <Segment key={blog.id}>
         <Link to={{ pathname: `/blogs/${blog.id}`, state: {...blog}}}>
-          <Header as="h2">{blog.title}</Header>
+          <Hover>{blog.title}</Hover>
         </Link>
         <p>{blog.body}</p>
         <div style={{display: "flex", justifyContent: "flex-end"}}>
@@ -27,4 +28,10 @@ const BlogList = ({ blogs, dispatch}) => (
 const mapStateToProps = (state) => {
   return { blogs: state.blogs, }
 }
+const Hover = styled.h2`
+  color: black;
+  &:hover {
+    color: blue !important;
+  }
+`
 export default connect(mapStateToProps)(BlogList);

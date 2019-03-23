@@ -14,6 +14,7 @@ class BlogForm extends React.Component {
     dispatch({ type: "ADD_BLOG", blog })
     dispatch({ type: "NEW_ID"})
     this.setState({ title: "", body: "", })
+    this.props.history.push("/")
   }
   render() {
     return (
